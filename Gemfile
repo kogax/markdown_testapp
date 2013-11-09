@@ -32,6 +32,7 @@ gem 'markdown-scaffold'
 
 gem 'haml-rails'
 gem 'redcarpet'
+gem 'coderay'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
