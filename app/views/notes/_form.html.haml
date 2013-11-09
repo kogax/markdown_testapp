@@ -1,3 +1,19 @@
+:javascript
+  $(function() {
+      $(document).on('click', 'a[data-toggle="tab"]', function (e) {
+          $("#markdown_preview").html(
+              markdown2html($("#markdown_edit").val())
+          );
+          //console.log($("#markdown_edit").val());
+      });
+
+      function markdown2html(text){
+          var converter = new Showdown.converter();
+          var html = converter.makeHtml(text);
+          return html;
+      }
+  }).call(this);
+
 = form_for @note do |f|
   - if @note.errors.any?
     #error_explanation
@@ -8,6 +24,16 @@
 
   .field.form-group
     = f.label :body
-    = f.text_area :body, :class => 'form-control'
+  .field.form-group
+    %ul#markdown_tab.nav.nav-tabs
+      %li.active
+        %a{"data-toggle" => "tab", href: "#edit"} 編集
+      %li
+        %a{"data-toggle" => "tab", href: "#preview"} プレビュー
+    .tab-content
+      #edit.tab-pane.active
+        = f.text_area :body, size: "30x20", :class => "form-control input-xxlarge", :id => "markdown_edit"
+      #preview.tab-pane
+        #markdown_preview
   .actions
     = f.submit 'Save', :class => 'btn btn-primary'

@@ -2,7 +2,7 @@
 
 %p
   %b Body:
-  = @note.body
+  = markdown(@note.body).html_safe
 
 = link_to 'Edit', edit_note_path(@note)
 \|
