@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 1.2'
 # Markdown
 gem 'markdown-scaffold'
 
+gem 'haml-rails'
+gem 'redcarpet'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
